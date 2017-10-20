@@ -1,59 +1,23 @@
 import React from 'react'
+import { Route,Router,IndexRoute } from 'react-router';
+import App from '../components/App'
 
-import AppBar from '../components/AppBar/index'
-import Avatar from '../components/Avatar/index'
-import Drawer from '../components/Drawers/index'
-import Buttom from '../components/ButtomNavigation/index'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+import Index from '../page';
 
-class BasicExample extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = { liked: false };
-  }
-  handleClick(e) {
-    this.setState({ liked: !this.state.liked });
-  }
-  render(){
-    const Home = () => (
-      <div>
-        <h2>Home</h2>
-      </div>
-    );
-    const OpenDrawer = () => (
-      <div>
-        <Drawer value={true}/>
-      </div>
-    );
-    return(
-      <div>
-        <Router>
-          <div>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/appbar">AppBar</Link></li>
-              <li><Link to="/avatar">Avatar</Link></li>
-              <li><Link to="/buttom">Buttom</Link></li>
-              <li><Link to="/drawer">Drawer</Link></li>
-              <li><Link to="/openDrawer" onClick={this.handleClick.bind(this)}>打开</Link></li>
-            </ul>
-          
-            <hr/>
+import Article from "../page/article";
+import NotFound from '../components/notfund';
 
-            <Route exact path="/" component={Home}/>
-            <Route path="/appbar" component={AppBar}/>
-            <Route path="/avatar" component={Avatar}/>
-            <Route path="/buttom" component={Buttom}/>
-            <Route path="/drawer" component={Drawer}/>
-            <Route path="/openDrawer" component={OpenDrawer}/>
-          </div>
-        </Router>
-      </div>
-    )
-  }
+
+function RouteMap (props) {
+	return(
+		<Router history={props.history}>
+	        <Route path='/' component={App}>
+	        	<IndexRoute component={Index} />
+	        	<Route path="home" component={Index} />
+	        	<Route path="/article" component={Article} />
+	        	<Route path="*" component={NotFound} />
+	        </Route>
+	    </Router>
+	)
 }
-export default BasicExample
+export default RouteMap

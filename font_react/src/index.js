@@ -1,14 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import RouterDemo from './router/index'
+import React from 'react'
+import { render } from 'react-dom'
 
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
-// ReactDOM.render(
-//    <div>
-//   	<RouterDemo />
-//    </div>,
-//   	document.getElementById('root')
-// );
+import reducer from './reducers'
+import Index from './containers'
+import RouterMap from './router'
+import { hashHistory } from 'react-router'
 
-import fn from './reducers/index'
-fn()
+const store = createStore(reducer)
+
+render(
+	<div>
+	  <Provider store={store}>
+	  	<RouterMap history={hashHistory} />
+	  </Provider>
+	</div>,
+  document.getElementById('root')
+)
