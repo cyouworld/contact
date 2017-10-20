@@ -7,7 +7,7 @@ class App extends React.Component {
         return (
         	<div>
         		<Index />
-            	<div className="container container-top">{this.props.children}</div>
+            	<div className="container container-custom">{this.props.children}</div>
             	<BottomNavigation/>
             </div>
         )

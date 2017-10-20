@@ -21,8 +21,8 @@ const styles = {
   },
 };
 
-function read(){
-  hashHistory.push('/article')
+function read(articleId){
+  hashHistory.push('/article/'+articleId)
 }
 
 function SimpleMediaCard(props) {
@@ -32,9 +32,8 @@ function SimpleMediaCard(props) {
       <Card className={classes.card}>
         <List>
           <ListItem button
-          onClick={()=>read()}
-          >
-            
+          onClick={()=>read(props.articleId)}
+          >  
             <CardContent className={classes.content}>
               <Typography type="headline" component="h2">
                 {props.txtTitle}

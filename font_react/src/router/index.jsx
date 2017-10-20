@@ -14,7 +14,7 @@ function RouteMap (props) {
 	        <Route path='/' component={App}>
 	        	<IndexRoute component={Index} />
 	        	<Route path="home" component={Index} />
-	        	<Route path="/article" component={Article} />
+	        	<Route path="/article/:id" component={Article} />
 	        	<Route path="*" component={NotFound} />
 	        </Route>
 	    </Router>
