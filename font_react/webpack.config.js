@@ -12,7 +12,13 @@ module.exports = {
         extensions: ['.jsx', '.js']
     },
 	devServer: {
-		contentBase: './public'
+		contentBase: './public',
+		 proxy: {
+          '/api': {
+            target: 'http://localhost:3000',
+            secure: false
+          }
+        }
 	},
 
 	plugins: [
