@@ -6,6 +6,11 @@ import ExploreIcon from 'material-ui-icons/Explore';
 import AccountCircleIcon from 'material-ui-icons/AccountCircle';
 import BrushIcon from 'material-ui-icons/Brush';
 import Avatar from '../Avatar';
+import {hashHistory } from 'react-router';
+
+function VisitPage(value) {
+  hashHistory.push('/'+value)
+}
 
 export const mailFolderListItems = (
   <div>
@@ -17,25 +22,25 @@ export const mailFolderListItems = (
 
 export const otherMailFolderListItems = (
   <div>
-    <ListItem button>
+    <ListItem onClick={()=>VisitPage('home')} button>
       <ListItemIcon>
         <HomeIcon />
       </ListItemIcon>
       <ListItemText primary="首页" />
     </ListItem>
-    <ListItem button>
+    <ListItem onClick={()=>VisitPage('group')} button>
       <ListItemIcon>
         <GroupIcon />
       </ListItemIcon>
       <ListItemText primary="小组" />
     </ListItem>
-    <ListItem button>
+    <ListItem onClick={()=>VisitPage('explore')} button>
       <ListItemIcon>
         <ExploreIcon />
       </ListItemIcon>
       <ListItemText primary="发现" />
     </ListItem>
-    <ListItem button>
+    <ListItem onClick={()=>VisitPage('article')} button>
       <ListItemIcon>
         <BrushIcon />
       </ListItemIcon>
