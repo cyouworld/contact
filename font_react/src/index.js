@@ -19,3 +19,14 @@ render(
 	</div>,
   document.getElementById('root')
 )
+//
+// import React from 'react';
+// import { render } from 'react-dom';
+// import VideoPage from './page/video'
+
+// render(
+//   <div>
+// 	  <VideoPage />
+//   </div>,
+//   document.getElementById('root')
+// )

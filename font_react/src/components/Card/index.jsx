@@ -6,7 +6,6 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import {hashHistory } from 'react-router';
-
 const styles = {
   card: {
     maxWidth: 732,
@@ -20,11 +19,6 @@ const styles = {
     width : "30%",
   },
 };
-
-function read(articleId){
-  hashHistory.push('/article/'+articleId)
-}
-
 function SimpleMediaCard(props) {
   const { classes } = props;
   return (
@@ -32,27 +26,24 @@ function SimpleMediaCard(props) {
       <Card className={classes.card}>
         <List>
           <ListItem button
-          onClick={()=>read(props.articleId)}
+          onClick={()=>props.onclickFun(props.itemId)}
           >  
             <CardContent className={classes.content}>
               <Typography type="headline" component="h2">
-                {props.txtTitle}
+                {props.itemTitle}
               </Typography>
               <Typography component="p">
-                {props.txt}
+                {props.itemTxt}
               </Typography>
               <CardActions>
                 <Button dense color="primary">
-                  分享
-                </Button>
-                <Button dense color="primary">
-                  阅读
+                  详细...
                 </Button>
               </CardActions>
             </CardContent>
             <CardMedia
               className={classes.media}
-              image={props.img}
+              image={props.itemImg}
               title="Contemplative Reptile"
             />
           </ListItem>
@@ -61,9 +52,7 @@ function SimpleMediaCard(props) {
     </div>
   );
 }
-
 SimpleMediaCard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
 export default withStyles(styles)(SimpleMediaCard);

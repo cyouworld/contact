@@ -7,6 +7,7 @@ import {
 
 import Carousel from '../components/Carousels';
 import Axio from 'axios';
+import jsonpAdapter from 'axios-jsonp';
 
 class Show extends React.Component{
 	constructor(props) {
@@ -18,11 +19,17 @@ class Show extends React.Component{
 
 	getArticleById = (id) => {
 		var that = this;
-		Axio.get('/api/read/'+id).then(
-			function (response) {
-				if(that.state.data==="")
-					that.setState({data:response.data})
+		Axio.get({
+			url:'http://localhost:3000/api/read/1',
+			adapter: jsonpAdapter,
+			withCredentials:true
+		}).then((res) => {
+			 console.log(res)
 			}
+			// function (response) {
+			// 	if(that.state.data==="")
+			// 		that.setState({data:response.data})
+			// }
 		).catch(function (error) {
 			console.log(error);
 		});
